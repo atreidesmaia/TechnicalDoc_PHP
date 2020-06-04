@@ -199,8 +199,7 @@ body{
 }
 
 article{
-  padding: 2.9rem 0;
-
+  padding: 1.5rem 0;
 }
 
 article p{
@@ -225,8 +224,8 @@ section{
 
 #nav-bar a{
     text-align: center;
-
 }
+
 #main-block{
   padding: 0 1.29rem;
   width: 95%;
@@ -239,9 +238,9 @@ section{
   padding: 0.5rem;
   margin-bottom: 2rem;
   text-align: right;
-  height: 4rem;
+  height: 1rem;
   width: 100%;
-  font-size: 6rem;
+  font-size: 2rem;
 }
 
 .section-block ul{
@@ -261,7 +260,7 @@ pre{
 
 code{
   text-indent: -5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border-left: solid;
   border-left: var(--color-brownRed);
 }

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PHP Cheatsheet</title>
+    <link rel = "stylesheet"
+      type = "text/css"
+      href = "TechnicalDocumentation-format.css" />
+  </head>
+
+<body>
+
+<nav id="nav-bar">
+  <header>PHP CHEATSHEET</header>
+  <ul>
+    <li><a class="nav-link" href="#introduction">Introduction</a></li>
+    <li><a class="nav-link" href="#use_of_php">Use of PHP</a>
+    <li><a class="nav-link" href="#php_tags">PHP Tags</a></li>
+    <li><a class="nav-link" href="#instruction_separation">Instruction Separation</a></li>
+    <li><a class="nav-link" href="#comments">Comments</a></li>
+    <li><a class="nav-link" href="#types">Types</a></li>
+    <li><a class="nav-link" href="#variables">Variables</a></li>
+    <li><a class="nav-link" href="#reference">Reference</a></li>
+    </ul>
+  </nav>
+
+<main id="main-block">
+    <section class="section-block" id="introduction">
+      <header>INTRODUCTION</header>
+      <article>
+        <p>
+          PHP (recursive acronym for <span class="sItalic">PHP: Hypertext Preprocessor</span>) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.
+        </p>
+      <p>An example:</p>
+      <pre><code>
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+           &lt;head&gt;
+             &lt;title&gt;Example&lt;/title&gt;
+           &lt;/head&gt;
+         &lt;body&gt;
+
+          &lt;?php
+               echo "Hi, I'm a PHP script!";
+          ?&gt;
+
+        &lt;/body&gt;
+        &lt;/html&gt;</code></pre>
+        <p>
+        PHP pages contain HTML with embedded code that, in this case, output "Hi, I'm a PHP script!" The PHP code is enclosed in special start and end processing instructions <?php and ?> that allow you to jump into and out of "PHP mode."
+        </p>
+    </article>
+    <p><a class="backMenu" href="#nav-bar">Go up!</a></p>
+    </section>
+
+    <section class="section-block" id="use_of_php">
+      <header>Use of PHP</header>
+      <article>
+       <p>
+         There are three main areas where PHP scripts are used.
+       </p>
+
+<ul><li><p class="sBold">Server-side scripting.</p></li></ul>
+      <p>
+        This is the most traditional and main target field for PHP.
+        You need three things to make this work: the PHP parser (CGI or server module),
+        a web server and a web browser. You need to run the web server, with a
+        connected PHP installation. You can access the PHP program output with a
+        web browser, viewing the PHP page through the server.
+        All these can run on your home machine if you are just experimenting
+        with PHP programming.
+      </p>
+      <p>
+        What distinguishes PHP from something like client-side JavaScript is that
+        the code is executed on the server, generating HTML which is then sent to
+        the client. The client would receive the results of running that script,
+        but would not know what the underlying code was. You can even configure
+        your web server to process all your HTML files with PHP, and then there's
+        really no way that users can tell what you have up your sleeve.</p>
+
+<ul><li><p class="sBold">Command line scripting.</p></li></ul>
+      <p>You can make a PHP script to run it without any server or browser. You
+        only need the PHP parser to use it this way. This type of usage is ideal
+        for scripts regularly executed using cron (on *nix or Linux) or
+        Task Scheduler (on Windows). These scripts can also be used for simple
+        text processing tasks.</p>
+
+<ul><li><p class="sBold">Writing desktop applications.</p></li></ul>
+      <p>PHP is probably not the very best language to create a desktop application
+        with a graphical user interface, but if you know PHP very well, and
+        would like to use some advanced PHP features in your client-side
+        applications you can also use PHP-GTK to write such programs. You
+        also have the ability to write cross-platform applications this way.</p>
+
+      <p>With PHP you are not limited to output HTML. PHP's abilities includes
+        outputting images, PDF files and even Flash movies (using libswf and Ming)
+        generated on the fly. You can also output easily any text, such as
+        XHTML and any other XML file. PHP can autogenerate these files, and
+        save them in the file system, instead of printing it out, forming a
+        server-side cache for your dynamic content.</p>
+
+      <p>One of the strongest and most significant features in PHP is its support
+        for a wide range of databases. Writing a database-enabled web page is
+        incredibly simple using one of the database specific extensions (e.g.,
+        for mysql), or using an abstraction layer like PDO, or connect to any
+        database supporting the Open Database Connection standard via the ODBC
+        extension. Other databases may utilize cURL or sockets, like CouchDB.</p>
+      </article>
+      <p><a class="backMenu" href="#nav-bar">Go up!</a></p>
+    </section>
+
+    <section class="section-block" id="php_tags">
+      <header>PHP tags</header>
+      <article>
+        <p>
+      When PHP parses a file, it looks for opening and closing tags,
+      which are <span class="sBold">&lt;?php and ?&gt;</span> which tell PHP to start and stop interpreting
+      the code between them. Parsing in this manner allows PHP to be embedded
+      in all sorts of different documents, as everything outside of a pair of
+      opening and closing tags is ignored by the PHP parser.
+    </p>
+
+      <p>PHP includes a <span class="sBold">short echo tag</span> &lt;?= which is a short-hand to
+        the more verbose &lt;?php echo.</p>
+
+      <p>PHP also allows for short open tag &lt;? (which is discouraged
+        since it is only available if enabled using the short_open_tag
+        php.ini configuration file directive, or if PHP was configured
+        with the --enable-short-tags option).</p>
+
+      <p><span class="sBold">If a file contains only PHP code, it is preferable to omit
+        the PHP closing tag at the end of the file.</span> This prevents
+        accidental whitespace or new lines being added after the PHP
+        closing tag, which may cause unwanted effects because PHP
+        will start output buffering when there is no intention from
+        the programmer to send any output at that point in the script.</p>
+        <pre><code>
+        &lt;?php
+        echo "Hello world";
+
+        // ... more code
+
+        echo "Last statement";
+
+        // the script ends here with no PHP closing tag</pre></code>
+
+      <ul><li><p class="sBold">PHP & HTML</p></li></ul>
+        <p>Everything outside of a pair of opening and closing tags is
+          ignored by the PHP parser which allows PHP files to have mixed content.
+          This allows PHP to be embedded in HTML documents, for example
+          to create templates.</p>
+        <pre><code>
+        &lt;p&gt;Statement ignored by PHP and displayed by browser.&lt;/p&gt;
+
+        &lt;?php echo 'While this is going to be parsed.'; ?&gt;</pre></code>
+
+        <p>This works as expected, because when the PHP interpreter hits the ?&gt;
+          closing tags, it simply starts outputting whatever it finds
+          until it hits another opening tag unless in the middle of a
+          conditional statement in which case the interpreter will
+          determine the outcome of the conditional before making a
+          decision of what to skip over.</p>
+
+      <ul><li><p class="sBold">Advanced escaping using conditions</p></li></ul>
+
+        <code><pre>
+
+        &lt;?php if ($expression == true): ?&gt;
+        This will show if the expression is true.
+
+        &lt;?php else: ?&gt;
+        Otherwise this will show.
+        &lt;?php endif; ?&gt;</code></pre>
+
+      <p>In this example PHP will skip the blocks where the
+        condition is not met, even though they are outside of
+        the PHP open/close tags; PHP skips them according to the
+        condition since the PHP interpreter will jump over blocks
+        contained within a condition that is not met.
+        For outputting large blocks of text, dropping out of PHP
+        parsing mode is generally more efficient than sending all
+        of the text through echo or print.</p>
+      </article>
+      <p><a class="backMenu" href="#nav-bar">Go up!</a></p>
+    </section>
+
+    <section class="section-block" id="instruction_separation">
+      <header>Instruction Separation</header>
+      <article>
+       <p>As in C or Perl, PHP requires instructions to be terminated with a semicolon at the end of each statement.
+The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon
+terminating the last line of a PHP block. The closing tag for the block will include the immediately
+trailing newline if one is present.</p>
+
+      <pre><code>
+      &lt;?php
+             echo 'This is a test';
+      ?&gt;
+
+      &lt;?php echo 'This is a test' ?&gt;
+
+      &lt;?php echo 'We omitted the last closing tag';</code></pre>
+
+      </article>
+      <p><a class="backMenu" href="#nav-bar">Go up!</a></p>
+    </section>
+
+    <section class="section-block" id="comments">
+      <header>Comments</header>
+      <article>
+        <p>PHP supports 'C', 'C++' and Unix shell-style (Perl style) comments. For example:</p>
+
+      <pre><code>
+      &lt;?php
+             echo 'Test'; // One-line c++ style comment
+             /* This is a multi line comment
+               yet another line of comment */
+             echo 'This is yet another test';
+             echo 'Final Test'; # One-line shell-style comment
+      ?&gt;</code></pre>
+
+        <p>The "one-line" comment styles only comment to the end of the line or the current block of PHP code, whichever comes first. This means that HTML code after // ... ?&gt; or # ... ?&gt; WILL be printed: ?&gt; breaks out of PHP mode and returns to HTML mode, and // or # cannot influence that. If the asp_tags configuration directive is enabled, it behaves the same with // %&gt; and # %&gt;. However, the &lt;/script&gt; tag doesn't break out of PHP mode in a one-line comment.</p>
+
+        </article>
+        <p><a class="backMenu" href="#nav-bar">Go up!</a></p>
+      </section>
+
+      <section class="section-block" id="types">
+        <header>Types</header>
+        <article>
+          <p>PHP supports ten primitive types.</p>
+          <div class="flexBox">
+
+          <ul class="plainList"><p>Four Scalar Types:</p>
+            <li><a href="https://www.php.net/manual/en/language.types.boolean.php" target="_blank">Boolean</a></li>
+            <li><a href="https://www.php.net/manual/en/language.types.integer.php" target="_blank">Integer</a></li>
+            <li><a href="https://www.php.net/manual/en/language.types.float.php" target="_blank">Float</a></li>
+            <li><a href="https://www.php.net/manual/en/language.types.string.php" target="_blank">String</a></li>
+          </ul>
+
+          <ul class="plainList"><p>Four Compound Types:</p>
+            <li><a href="https://www.php.net/manual/en/language.types.array.php" target="_blank">Array</a></li>
+            <li><a href="https://www.php.net/manual/en/language.types.object.php" target="_blank">Object</a></li>
+            <li><a href="https://www.php.net/manual/en/language.types.callable.php" target="_blank">Callable</a></li>
+            <li><a href="https://www.php.net/manual/en/language.types.iterable.php" target="_blank">Iterable</a></li>
+          </ul>
+
+          <ul class="plainList"><p>Two Special Types:</p>
+            <li><a href="https://www.php.net/manual/en/language.types.resource.php" target="_blank">Resource</a></li>
+            <li><a href="https://www.php.net/manual/en/language.types.null.php" target="_blank">NULL</a></li>
+          </ul>
+
+          <ul class="plainList"><p>Intro of Pseudo-Types:</p>
+            <li><a href="https://www.php.net/manual/en/language.pseudo-types.php#language.types.mixed" target="_blank">Mixed</a></li>
+            <li><a href="https://www.php.net/manual/en/language.pseudo-types.php#language.types.number" target="_blank">Number</a></li>
+            <li><a href="https://www.php.net/manual/en/language.pseudo-types.php#language.types.callback" target="_blank">Callback or callable</a></li>
+            <li><a href="https://www.php.net/manual/en/language.types.null.php" target="_blank">NULL</a></li>
+            <li><a href="https://www.php.net/manual/en/language.pseudo-types.php#language.types.array-object" target="_blank">Array|Object</a></li>
+          </ul>
+        </div>
+      </article>
+      <p><a class="backMenu" href="#nav-bar">Go up!</a></p>
+    </section>
+
+    <section class="section-block" id="variables">
+      <header>Variables</header>
+      <article>
+        <p class="sBold">Variables From External Sources</p>
+
+        <ul><li><p class="sBold">HTML Forms (GET and POST)</p></li></ul>
+
+        <p>When a form is submitted to a PHP script, the information from that form is automatically made available to the script. There are few ways to access this information, for example:</p>
+
+        <pre><code>
+        &lt;form action="foo.php" method="post"&gt;
+            Name:  &lt;input type="text" name="username"&gt;&lt;br/&gt;
+            Email: &lt;input type="text" name="email"/&gt;&lt;br/&gt;
+            &lt;input type="submit" name="submit" value="Submit!"/&gt;
+        &lt;/form&gt;</pre></code>
+
+          <ul><li><p class="sBold">Accessing data from a simple POST HTML form</p></li></ul>
+
+          <pre><code>
+            &lt;?php
+            echo $_POST['username'];
+            echo $_REQUEST['username'];
+            ?&gt;</pre></code>
+          </article>
+          <p><a class="backMenu" href="#nav-bar">Go up!</a></p>
+        </section>
+
+        <section class="section-block" id="reference">
+          <header>Reference</header>
+          <article>
+            <p>Hey! Maia here! Thanks so much for reading this documentation, you can follow me on <a href="https://twitter.com/atreidesmaia" target="_blank" class="referenceLink">Twitter</a> or <a href="https://atreidesmaia.tumblr.com/" target="_blank" class="referenceLink">Tumblr</a> for more posts regarding Web Design and Graphic Design.</p>
+            <p class="sBold">All the documentation presented in this page has been taken from <a href="https://php.net" target="blank" class="referenceLink">PHP</a>.</p>
+
+          </article>
+          <p><a class="backMenu" href="#nav-bar">Go up!</a></p>
+        </section>
+
+</main>
+
+</body>
+</html>

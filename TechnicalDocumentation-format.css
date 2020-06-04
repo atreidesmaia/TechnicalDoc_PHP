@@ -1,0 +1,284 @@
+:root{
+ --color-brownRed: #be9ea0;      /* background bR */
+ --color-lightbR: #e4dfdf; /* light highlights */
+ --color-lightestbR: #F8F5F5;
+ --color-lightLavander: #E1E2EB; /* extraDetails */
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
+
+html{
+  font-size: 62.5%;
+}
+
+html,
+body {
+  color: black;
+  background-color: var(--color-lightbR);
+  font-family: 'Source Code Pro', monospace;
+  line-height: 1.5;
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+
+ul{
+  padding: 2px 4px;
+}
+
+header{
+  font-size: 3rem;
+  color: var(--color-brownRed);
+}
+
+#nav-bar{
+  position: fixed;
+  text-align: center;
+  width: 30rem;
+  height: 100%;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  border-right: solid;
+  border-color: var(--color-brownRed);
+  overflow-x: hidden;
+}
+
+#nav-bar a{
+  display: block;
+  text-align: left;
+  padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+  color: black;
+  text-decoration: none;
+  font-size: 1.6rem;
+  border-bottom: solid;
+  border-color: var(--color-brownRed);
+}
+
+#nav-bar a:hover{
+  background-color: var(--color-lightLavander);
+  width: 100%;
+}
+
+#nav-bar ul{
+  height: 80%;
+  list-style: none;
+  text-indent: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#nav-bar li{
+  width: 100%;
+}
+
+.nav-link{
+  margin-left: 2rem;
+}
+
+#main-block{
+  margin-left: 30rem;
+  font-size: 2rem;
+  padding: 0 5rem 0 2.5rem;
+  text-align: left;
+}
+
+.backMenu{
+  text-align: right;
+  text-decoration: none;
+  font-style: italic;
+  color: var(--color-lightbR);
+}
+
+.section-block{
+  word-wrap: normal;
+  word-break:keep-all;
+  font-size: 1.5rem;
+}
+
+pre{
+  margin-left: 2rem;
+  padding-bottom: 2rem;
+  background-color: var(--color-lightestbR);
+  width: 100%;
+}
+
+article{
+  padding-left: 2rem;
+}
+
+.section-block li{
+  text-indent: 4rem;
+}
+
+.sBold{
+  font-weight: 600;
+}
+
+.sItalic{
+  font-style: italic;
+}
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 0.9rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-brownRed);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-lightLavander);
+}
+/* Scrollbar - END */
+
+.flexBox{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+
+}
+
+.flexBox ul{
+  border: solid;
+  border-color: var(--color-lightestbR);
+  margin: 0 0.3rem;
+}
+
+.flexBox li{
+  text-indent: 0;
+}
+
+.flexBox a{
+  color: black;
+  text-decoration: none;
+  margin: 0;
+}
+
+.plainList{
+  list-style: none;
+  color: black;
+}
+
+.plainList p{
+  background-color: var(--color-lightestbR);
+}
+
+.flexBox li:hover{
+  background-color: var(--color-lightestbR);
+}
+
+code{
+  font-size: 1.02rem;
+}
+
+.referenceLink{
+  color: black;
+  text-decoration: none;
+  background-color: var(--color-lightLavander);
+  font-weight: 600;
+  font-style: italic;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+
+body{
+  overflow-x: hidden;
+}
+.flexBox{
+  margin: 0 6rem;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+article{
+  padding: 2.9rem 0;
+  text-align: justify;
+}
+
+section{
+  margin-bottom: 2rem;
+}
+
+#nav-bar{
+width: 95%;
+  position: relative;
+  border-style: none;
+  padding: 0 0 3rem 0;
+}
+
+#nav-bar header{
+  text-align: center;
+  padding-left: 2rem;
+}
+
+#nav-bar a{
+    text-align: center;
+
+}
+#main-block{
+  padding: 0 1.29rem;
+width: 95%;
+  position: relative;
+  margin-left: 0;
+}
+
+.section-block header{
+  background-color: var(--color-lightestbR);
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  text-align: right;
+  height: 2rem;
+  width: 100%;
+}
+
+p{
+  padding: 0 2rem;
+  margin: 0;
+}
+pre{
+  width: 50rem;
+  margin-left: 0;
+  background-color: var(--color-lightbR);
+
+}
+
+code{
+  text-indent: -5rem;
+  border-left: solid;
+  border-left: var(--color-brownRed);
+}
+
+.backMenu{
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  font-style: italic;
+  color: var(--color-brownRed);
+}
+
+.flexBox ul{
+  font-size: 1.2rem;
+  width: 40%;
+}
+
+.flexBox li{
+  padding: 0.4rem 0;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+
+}
+
+}

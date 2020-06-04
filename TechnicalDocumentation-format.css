@@ -197,14 +197,14 @@ code{
 body{
   overflow-x: hidden;
 }
-.flexBox{
-  margin: 0 6rem;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
+
 article{
   padding: 2.9rem 0;
-  text-align: justify;
+
+}
+
+article p{
+  font-size: 1rem;
 }
 
 section{
@@ -239,12 +239,17 @@ section{
   padding: 0.5rem;
   margin-bottom: 2rem;
   text-align: right;
-  height: 2rem;
+  height: 4rem;
   width: 100%;
+  font-size: 6rem;
+}
+
+.section-block ul{
+  list-style: none;
 }
 
 p{
-  padding: 0 2rem;
+  padding: 1.5rem 2rem;
   margin: 0;
 }
 pre{
@@ -256,6 +261,7 @@ pre{
 
 code{
   text-indent: -5rem;
+  font-size: 2rem;
   border-left: solid;
   border-left: var(--color-brownRed);
 }
@@ -268,18 +274,32 @@ code{
   color: var(--color-brownRed);
 }
 
+.flexBox{
+  margin: 0 0.01rem;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .flexBox ul{
   font-size: 1.2rem;
-  width: 40%;
+  width: 50%;
 }
 
 .flexBox li{
-  padding: 0.4rem 0;
+  padding: 1.5rem 0;
 }
 
 ::-webkit-scrollbar {
   width: 0.5rem;
-
 }
 
+.plainList li{
+
+  height: 2rem;
+  font-size: 2rem;
+}
+
+.plainList p{
+  font-size: 2rem;
+}
 }
